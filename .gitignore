@@ -1,0 +1,19 @@
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.tfstate.lock.info
+
+# Module directory
+terraform/.terraform/
+
+# cdk ignore
+prod_ecs_construct/*.swp
+prod_ecs_construct/package-lock.json
+prod_ecs_construct/__pycache__
+prod_ecs_construct/.pytest_cache
+prod_ecs_construct/.env
+prod_ecs_construct/.venv
+prod_ecs_construct/*.egg-info
+
+# CDK asset staging directory
+prod_ecs_construct/.cdk.staging
+prod_ecs_construct/cdk.out
