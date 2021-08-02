@@ -20,12 +20,26 @@ pipeline {
             }
         }
 
-        stage("Deploy") {
+        stage("Plan && Deploy") {
             steps {
-                sh '''
-                cd terraform
-                terraform plan
-                '''
+                withCredentials([[ $class: 'AmazonWebServicesCredentialsBinding',credentialsId: "Ok"]]){
+                    sh '''
+                    cd terraform
+                    terraform plan
+                    terraform apply --auto-approve
+                    '''
+                }     
+            }
+        }
+
+        stage("Destroy") {
+            steps {
+                withCredentials([[ $class: 'AmazonWebServicesCredentialsBinding',credentialsId: "Ok"]]){
+                    sh '''
+                    cd terraform
+                    terraform destroy --auto-approve
+                    '''
+                }  
             }
         }
     }
