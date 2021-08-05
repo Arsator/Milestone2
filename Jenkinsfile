@@ -15,7 +15,7 @@ pipeline {
             }    
             post {
                 success {
-                    echo "Initialization succeed."
+                    echo "Initialization succeed"
                 }
             }
         }
